@@ -12,7 +12,7 @@ const Page = () => {
   useEffect(() => {
     async function getData() {
       const api = await fetch(
-        `http://api.weatherapi.com/v1/forecast.json?key=3125214bd1d4440bab0134006242706&q=${cityName}&days=5&aqi=no&alerts=no`
+        `http://api.weatherapi.com/v1/forecast.json?key=${process.env.NEXT_PUBLIC_API_KEY}&q=${cityName}&days=5&aqi=no&alerts=no`
       );
 
       setData(await api.json());
