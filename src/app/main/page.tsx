@@ -4,15 +4,16 @@ import React, { useEffect, useState } from "react";
 import Weather from "@/common_components/weather/page";
 import FutureWeather from "@/common_components/future_weather/FutureWeather";
 import { RootObject } from "@/type";
+import Accordian from "@/common_components/accordian/Accordian";
 
 const Page = () => {
   const [data, setData] = useState<RootObject>();
-  const [cityName, setCityName] = useState<HTMLInputElement | string>("paris");
+  const [cityName, setCityName] = useState<HTMLInputElement | string>("");
 
   useEffect(() => {
     async function getData() {
       const api = await fetch(
-        `http://api.weatherapi.com/v1/forecast.json?key=${process.env.NEXT_PUBLIC_API_KEY}&q=${cityName}&days=5&aqi=no&alerts=no`
+        `http://api.weatherapi.com/v1/forecast.json?key=${process.env.NEXT_PUBLIC_API_KEY}&q=${cityName || "paris"}&days=10&aqi=no&alerts=no`
       );
 
       setData(await api.json());
@@ -33,14 +34,11 @@ const Page = () => {
   }
 
   return (
-    <>
-      <h1 className="text-2xl font-sans font-bold mt-10 ml-10 text-slate-500 max-sm:ml-5">
-        Weather App
-      </h1>
+    <div className="flex flex-col justify-center items-center">
       <br />
-      <div className="relative flex">
+      <div className="self-center relative flex w-[90%]">
         <input
-          className="ml-10 w-[90%] p-2 rounded-2xl focus-visible:outline-none p-2 max-sm:ml-5 min-w-[400px] placeholder-font-sans"
+          className=" w-[100%] p-2 rounded-2xl focus-visible:outline-none p-2 border-transparent"
           type="text"
           name="search"
           onChange={handleCityName}
@@ -51,8 +49,10 @@ const Page = () => {
 
       {data && <Weather data={data} />}
       <br />
-      {data && < FutureWeather data={data}/>}
-    </>
+      {data && <FutureWeather data={data}/>}
+      <br />
+      {data && <Accordian data={data}/>}
+    </div>
   );
 };
 

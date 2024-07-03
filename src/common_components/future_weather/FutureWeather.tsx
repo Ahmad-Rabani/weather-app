@@ -5,13 +5,13 @@ import { AllTypes } from "@/type";
 const FutureWeather = ({data}: AllTypes) => {
   return (
     <>
-      <div className="w-[90%] ml-10 bg-white rounded-xl p-4 max-sm:ml-5 min-w-[400px]">
+      <div className="w-[90%] bg-white rounded-xl p-4 flex justify-center items-center flex-col">
         <h1 className="text-xl font-medium font-sans text-slate-500 ml-6">
           Extended Forcast
         </h1>
-
-        <div className="flex mt-3 justify-evenly flex-wrap">
-         {data && data.forecast.forecastday.map((item) => <FiveDayForcast key={item.date} futureData={item}/>) }
+        <br />
+        <div className="flex w-[100%] mt-3 justify-evenly flex-wrap gap-4 max-md:w-1/2">
+         {data && data.forecast.forecastday.map((item,index) => index < 5 && <FiveDayForcast key={item.date} futureData={item}/>) }
         </div>
 
       </div>
