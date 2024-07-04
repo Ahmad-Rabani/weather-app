@@ -5,6 +5,7 @@ import Weather from "@/common_components/weather/page";
 import FutureWeather from "@/common_components/future_weather/FutureWeather";
 import { RootObject } from "@/type";
 import Accordian from "@/common_components/accordian/Accordian";
+import NotFound from "@/common_components/loader/NotFound";
 
 const Page = () => {
   const [data, setData] = useState<RootObject>();
@@ -12,15 +13,22 @@ const Page = () => {
 
   useEffect(() => {
     async function getData() {
-      const api = await fetch(
-        `http://api.weatherapi.com/v1/forecast.json?key=${process.env.NEXT_PUBLIC_API_KEY}&q=${cityName || "paris"}&days=10&aqi=no&alerts=no`
-      );
+      const api = `http://api.weatherapi.com/v1/forecast.json?key=${
+        process.env.NEXT_PUBLIC_API_KEY
+      }&q=${cityName || "paris"}&days=10&aqi=no&alerts=no`;
 
-      setData(await api.json());
+      try {
+        const response = await fetch(api);
+        const dataRes = await response.json();
+        if (dataRes.location.name) {
+          setData(dataRes);
+        }
+      } catch {
+        setData(undefined);
+      }
     }
     getData();
   }, [cityName]);
-
 
   let timeout: any = null;
   function handleCityName(e: React.ChangeEvent<HTMLInputElement>) {
@@ -30,9 +38,8 @@ const Page = () => {
     timeout = setTimeout(function () {
       console.log(value);
       setCityName(value);
-    }, 1000);
+    }, 1500);
   }
-
   return (
     <div className="flex flex-col justify-center items-center">
       <br />
@@ -47,11 +54,34 @@ const Page = () => {
       </div>
       <br />
 
-      {data && <Weather data={data} />}
-      <br />
-      {data && <FutureWeather data={data}/>}
-      <br />
-      {data && <Accordian data={data}/>}
+      {data ? (
+        <div className="w-[100%] flex flex-col jusitfy-center items-center gap-y-3">
+          <Weather data={data} />
+          <FutureWeather data={data} />
+          <Accordian data={data} />
+        </div>
+      ) : (
+        <NotFound />
+      )}
+
+      {/* {data ? (
+         <> <Weather data={data} />
+          <FutureWeather data={data} />
+          <Accordian data={data} /> </>
+      ) : (
+        <NotFound />
+      )} */}
+
+      {/* {data ? (
+        [
+          <Weather data={data} />,
+          <FutureWeather data={data} />,
+          <Accordian data={data} />,
+      ]
+      ) : (
+        <NotFound />
+      )} */}
+
     </div>
   );
 };

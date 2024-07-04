@@ -1,13 +1,19 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import Image from "next/image";
-import clear from "../../../img/clear.png";
+import rain from "../../../img/rain.png";
+import sunny from "../../../img/sunny.png";
+import cloud from "../../../img/cloud.png";
+import moderateRain from "../../../img/moderate-rain.png"
+import heavyRain from "../../../img/storm.png"
 import humidityimg from "../../../img/humidityImg.png";
 import wind from "../../../img/wind.png";
 import pressure from "../../../img/pressure.png";
+import mist from "../../../img/mist.png"
 import { AllTypes } from "@/type";
 
 const Weather = ({data}: AllTypes ) => {
 const [isCelsius , setIsCelsius] = useState<boolean | 0>(true);
+const [icon, setIcon] = useState(sunny);
 
 const cityName = data.location.name;
 const weatherCondition = data.current.condition.text;
@@ -15,6 +21,25 @@ const weatherCondition = data.current.condition.text;
 function chagneUnit() {
   setIsCelsius(isCelsius ? data.current.temp_c && !isCelsius : data.current.temp_f && !isCelsius)
 }
+
+useEffect(() => {
+  function icons() {
+    if (data.current.condition.text === "Patchy rain nearby") {
+      setIcon(rain);
+    } else if (data.current.condition.text === "Partly Cloudy ") {
+      setIcon(cloud);
+    } else if (data.current.condition.text === "Sunny") {
+      setIcon(sunny);
+    } else if (data.current.condition.text === "Heavy rain"){
+      setIcon(heavyRain);
+    } else if (data.current.condition.text === "Moderate rain"){
+      setIcon(moderateRain);
+    }else if (data.current.condition.text === "Mist"){
+      setIcon(mist);
+    }
+  }
+  icons();
+}, [data.current.condition.text,data]);
 
   return (
     <div className="w-[90%] bg-white rounded-xl p-4 max-sm:justify-center max-sm:items-center ">
@@ -31,11 +56,11 @@ function chagneUnit() {
       <br />
 
       <div className="flex justify-between w-[100%] flex-wrap">
-        <div className="ml-3 max-sm:ml-0">
+        <div className="flex flex-col ml-3 max-sm:ml-0 gap-y-3">
           <h2 className="text-lg font-bold font-mono text-slate-700 ml-6 text-[rgb(61,124,178)]">{cityName}</h2>
 
           <div className="flex ml-6">
-            <Image src={clear} width={150} height={150} alt="" />
+            <Image src={icon} width={120} height={120} alt="" />
             <h1 className="text-7xl max-sm:text-3xl max-sm:self-start max-sm:ml-2 font-sans self-center ml-5 text-slate-500">{isCelsius ? data.current.temp_c : data.current.temp_f }&deg;</h1>
           </div>
 

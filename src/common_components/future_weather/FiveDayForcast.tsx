@@ -3,6 +3,8 @@ import Image from "next/image";
 import rain from "../../../img/rain.png";
 import sunny from "../../../img/sunny.png";
 import cloud from "../../../img/cloud.png";
+import moderateRain from "../../../img/moderate-rain.png"
+import heavyRain from "../../../img/storm.png"
 import { FiveDayForcastProps } from "@/type";
 
 const weekday = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
@@ -17,10 +19,14 @@ const FiveDayForcast = ({ futureData }: FiveDayForcastProps) => {
     function icons() {
       if (futureData.day.condition.text === "Patchy rain nearby") {
         setIcon(rain);
-      } else if (futureData.day.condition.text === "Partly Cloudy") {
+      } else if (futureData.day.condition.text === "Partly Cloudy ") {
         setIcon(cloud);
       } else if (futureData.day.condition.text === "Sunny") {
         setIcon(sunny);
+      } else if (futureData.day.condition.text === "Heavy rain"){
+        setIcon(heavyRain);
+      } else if (futureData.day.condition.text === "Moderate rain"){
+        setIcon(moderateRain);
       }
     }
     icons();

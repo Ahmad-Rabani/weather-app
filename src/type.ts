@@ -4,6 +4,7 @@ export interface RootObject {
   forecast: Forecast;
   alerts: Alerts;
 }
+
 interface Alerts {
   alert: Alert[];
 }

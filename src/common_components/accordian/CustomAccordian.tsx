@@ -9,6 +9,8 @@ import wind from "../../../img/wind.png";
 import rain from "../../../img/rain.png";
 import sunny from "../../../img/sunny.png";
 import cloud from "../../../img/cloud.png";
+import heavyRain from "../../../img/storm.png"
+import moderateRain from "../../../img/moderate-rain.png"
 import rainChance from "../../../img/rain-Chance.png";
 
 const CustomAccordian = ({ futureData }: FiveDayForcastProps) => {
@@ -23,10 +25,14 @@ const CustomAccordian = ({ futureData }: FiveDayForcastProps) => {
     function icons() {
       if (futureData.day.condition.text === "Patchy rain nearby") {
         setIcon(rain);
-      } else if (futureData.day.condition.text === "Partly Cloudy") {
+      } else if (futureData.day.condition.text === "Partly Cloudy ") {
         setIcon(cloud);
       } else if (futureData.day.condition.text === "Sunny") {
         setIcon(sunny);
+      } else if (futureData.day.condition.text === "Heavy rain"){
+        setIcon(heavyRain);
+      } else if (futureData.day.condition.text === "Moderate rain"){
+        setIcon(moderateRain);
       }
     }
     icons();
@@ -56,11 +62,11 @@ const CustomAccordian = ({ futureData }: FiveDayForcastProps) => {
       </div>
 
       {display && (
-        <div className="max-sm:p-5 bg-[#EBF9FC] rounded-md p-10 mt-1">
+        <div className="max-sm:p-0 bg-[#EBF9FC] rounded-md p-10 mt-1">
           <div className="flex justify-between flex-wrap max-sm:justify-center max-sm:gap-y-2 max-sm:gap-x-3">
-            <div className="flex flex-col max-sm:justify-center max-sm:items-center">
-              <div>
-                <h2 className="text-xl font-medium font-sans text-blue-500 max-sm:text-sm">
+            <div className="flex flex-col max-sm:justify-center max-sm:items-center p-3 max-sm:gap-y-1">
+              <div className="flex flex-col gap-y-2">
+                <h2 className="text-xl font-medium font-sans text-blue-500 max-sm:text-[10px]">
                   Celsius / Fehrenheit
                 </h2>
                 <div className="flex gap-x-2">
@@ -69,7 +75,7 @@ const CustomAccordian = ({ futureData }: FiveDayForcastProps) => {
                     &deg;
                   </h1>
                   <Image
-                    className="ml-3 max-sm:h-8 max-sm:w-8"
+                    className="ml-3 max-sm:h-6 max-sm:w-6 max-sm:ml-0"
                     width={50}
                     height={50}
                     src={icon}
@@ -103,7 +109,7 @@ const CustomAccordian = ({ futureData }: FiveDayForcastProps) => {
                 </p>
               </div>
             </div>
-            <div className="flex flex-col justify-center gap-y-4 p-3 rounded">
+            <div className="flex flex-col justify-center gap-y-4 p-3 rounded max-sm:w-[153px]">
               <div className="flex justify-between gap-x-2">
                 <div className="flex gap-x-2">
                 <Image
@@ -117,7 +123,6 @@ const CustomAccordian = ({ futureData }: FiveDayForcastProps) => {
                   Humidity
                 </p>
                 </div>
-                
                 <p className="text-medium font-medium font-sans text-blue-500 max-sm:text-sm">{futureData.day.avghumidity}%</p>
               </div>
               <hr />
@@ -134,7 +139,6 @@ const CustomAccordian = ({ futureData }: FiveDayForcastProps) => {
                   wind
                 </p>
                 </div>
-    
                 <p className="text-medium font-medium font-sans text-blue-500 max-sm:text-sm">{futureData.day.maxwind_kph}kph</p>
               </div>
               <hr />
@@ -151,7 +155,6 @@ const CustomAccordian = ({ futureData }: FiveDayForcastProps) => {
                   Rain
                 </p>
                 </div>
-          
                 <p className="text-medium font-medium font-sans text-blue-500 max-sm:text-sm">{futureData.day.daily_chance_of_rain}%</p>
               </div>
             </div>

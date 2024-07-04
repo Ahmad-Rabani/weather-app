@@ -20,7 +20,6 @@ export function FutureData({ futureData }: FiveDayForcastProps) {
           <Accordion.Content className="bg-white">
             <div className="flex justify-between">
               <div>
-
                 <div>
                   <h2 className="text-xl font-medium font-sans text-blue-500 max-sm:text-sm">Celsius / Fehrenheit</h2>
                   <h1 className="text-4xl font-medium font-sans text-slate-500 max-sm:text-sm">
