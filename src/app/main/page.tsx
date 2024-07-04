@@ -13,7 +13,7 @@ const Page = () => {
 
   useEffect(() => {
     async function getData() {
-      const api = `http://api.weatherapi.com/v1/forecast.json?key=${
+      const api = `https://api.weatherapi.com/v1/forecast.json?key=${
         process.env.NEXT_PUBLIC_API_KEY
       }&q=${cityName || "paris"}&days=10&aqi=no&alerts=no`;
 
