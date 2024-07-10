@@ -6,3 +6,6 @@ body {
   background:  rgb(224,248,251);
 }
 
+* {
+  @apply transition-colors duration-200
+}

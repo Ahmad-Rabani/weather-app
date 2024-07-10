@@ -39,7 +39,7 @@ const FiveDayForcast = ({ futureData }: FiveDayForcastProps) => {
       <h3 className="text-[rgb(76,131,192)] text-sm font-semibold mt-3">
         {futureData.day.condition.text}
       </h3>
-      <p className="font-sans text-slate-500">
+      <p className="font-sans text-slate-500 dark:text-white">
         {futureData.day.maxtemp_c}&deg;/{futureData.day.maxtemp_f}&deg;
       </p>
     </div>

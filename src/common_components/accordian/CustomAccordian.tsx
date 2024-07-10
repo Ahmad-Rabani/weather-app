@@ -44,38 +44,38 @@ const CustomAccordian = ({ futureData }: FiveDayForcastProps) => {
       <br />
       <div
         onClick={handleAccordian}
-        className="flex justify-between items-center border-y-4 border rounded border-neutral-600 p-4 cursor-pointer"
+        className="flex justify-between items-center dark:border-white border-y-4 border rounded border-neutral-600 p-4 max-sm:p-2 cursor-pointer dark:bg-slate-950"
       >
-        <h1 className="text-xl font-medium font-sans text-gray-500">
+        <h1 className="text-xl font-medium font-sans text-gray-500 dark:text-white">
           Date: {futureData.date}
         </h1>
         <div className="flex justify-center items-center max-sm:hidden">
-          <p>
-            {!display && futureData.day.maxtemp_c + "-c"}{" "}
+          <p className="dark:text-white">
+            {!display && futureData.day.maxtemp_c + "-c /"}{" "}
             {!display && futureData.day.maxtemp_f + "-f"}
           </p>
           {!display && (
             <Image className="ml-3 max-sm:hidden" width={20} height={30} src={icon} alt="" />
           )}
         </div>
-        <p>{display ? "↓" : "^"}</p>
+        <p className="dark:text-white">{display ? "↓" : "^"}</p>
       </div>
 
       {display && (
-        <div className="max-sm:p-0 bg-[#EBF9FC] rounded-md p-10 mt-1">
-          <div className="flex justify-between flex-wrap max-sm:justify-center max-sm:gap-y-2 max-sm:gap-x-3">
+        <div className="max-sm:p-0 bg-[#EBF9FC] rounded-md p-10 mt-1 dark:bg-slate-950">
+          <div className="flex justify-between flex-wrap max-sm:justify-around max-sm:gap-y-2 max-sm:gap-x-3">
             <div className="flex flex-col max-sm:justify-center max-sm:items-center p-3 max-sm:gap-y-1">
               <div className="flex flex-col gap-y-2">
-                <h2 className="text-xl font-medium font-sans text-blue-500 max-sm:text-[10px]">
+                <h2 className="text-xl font-medium font-sans text-blue-500 max-sm:text-xl">
                   Celsius / Fehrenheit
                 </h2>
-                <div className="flex gap-x-2">
-                  <h1 className="text-4xl font-medium font-sans text-slate-500 max-sm:text-sm">
+                <div className="flex gap-x-2 justify-center">
+                  <h1 className="text-4xl font-medium font-sans text-slate-500 max-sm:text-lg dark:text-white">
                     {futureData.day.maxtemp_c}&deg; / {futureData.day.maxtemp_f}
                     &deg;
                   </h1>
                   <Image
-                    className="ml-3 max-sm:h-6 max-sm:w-6 max-sm:ml-0"
+                    className="ml-3 max-sm:h-8 max-sm:w-8 max-sm:ml-0"
                     width={50}
                     height={50}
                     src={icon}
@@ -84,78 +84,78 @@ const CustomAccordian = ({ futureData }: FiveDayForcastProps) => {
                 </div>
               </div>
               <br />
-              <div className="flex gap-x-1">
+              <div className="flex gap-x-1 max-sm:self-center">
                 <Image
-                  className="mr-1 h-5 max-sm:mr-0 max-sm:w-4 max-sm:h-4"
+                  className="mr-1 h-5 max-sm:mr-0 max-sm:w-6 max-sm:h-6"
                   width={15}
                   height={10}
                   alt=""
                   src={sunrise}
                 />
-                <p className="text-medium font-medium font-sans text-slate-500 max-sm:text-sm">
+                <p className="text-medium font-medium font-sans text-slate-500 max-sm:text-lg dark:text-white">
                   Sunrise {futureData.astro.sunrise}
                 </p>
               </div>
-              <div className="flex gap-x-1">
+              <div className="flex gap-x-1 max-sm:self-center">
                 <Image
-                  className="mr-1 h-5 max-sm:mr-0 max-sm:w-4 max-sm:h-4"
+                  className="mr-1 h-5 max-sm:mr-0 max-sm:w-6 max-sm:h-6"
                   width={15}
                   height={10}
                   alt=""
                   src={sunset}
                 />
-                <p className="text-medium font-medium font-sans text-slate-500 max-sm:text-sm">
+                <p className="text-medium font-medium font-sans text-slate-500 max-sm:text-lg dark:text-white">
                   Sunset {futureData.astro.sunset}
                 </p>
               </div>
             </div>
-            <div className="flex flex-col justify-center gap-y-4 p-3 rounded max-sm:w-[153px]">
-              <div className="flex justify-between gap-x-2">
-                <div className="flex gap-x-2">
+            <div className="flex flex-col justify-center gap-y-4 p-3 rounded max-sm:w-[153px] max-sm:gap-y-3">
+              <div className="flex justify-between items-center gap-x-2">
+                <div className="flex gap-x-1">
                 <Image
-                  className="mr-1 h-5 max-sm:mr-0 max-sm:w-4 max-sm:h-4"
+                  className="mr-1 max-sm:mr-0 max-sm:w-5 max-sm:h-5"
                   width={20}
                   height={10}
                   alt=""
                   src={humidityImg}
                 />
-                <p className="text-medium font-medium font-sans text-slate-500 max-sm:text-sm">
+                <p className="text-medium font-medium font-sans text-slate-500 max-sm:text-md dark:text-white">
                   Humidity
                 </p>
                 </div>
-                <p className="text-medium font-medium font-sans text-blue-500 max-sm:text-sm">{futureData.day.avghumidity}%</p>
+                <p className="text-medium font-medium font-sans text-blue-500 max-sm:text-md">{futureData.day.avghumidity}%</p>
               </div>
               <hr />
-              <div className="flex justify-between gap-x-2">
+              <div className="flex justify-between items-center gap-x-2">
                 <div className="flex gap-x-2">
                 <Image
-                  className="mr-1 h-5 max-sm:mr-0 max-sm:w-4 max-sm:h-4"
+                  className="mr-1 max-sm:mr-0 max-sm:w-5 max-sm:h-5"
                   width={20}
                   height={10}
                   alt=""
                   src={wind}
                 />
-                <p className="text-medium font-medium font-sans text-slate-500 max-sm:text-sm">
+                <p className="text-medium font-medium font-sans text-slate-500 max-sm:text-md dark:text-white">
                   wind
                 </p>
                 </div>
-                <p className="text-medium font-medium font-sans text-blue-500 max-sm:text-sm">{futureData.day.maxwind_kph}kph</p>
+                <p className="text-medium font-medium font-sans text-blue-500 max-sm:text-md">{futureData.day.maxwind_kph}kph</p>
               </div>
               <hr />
-              <div className="flex justify-between gap-x-2">
+              <div className="flex justify-between items-center gap-x-2">
                 <div className="flex gap-x-2">
                 <Image
-                  className="mr-1 h-5 max-sm:mr-0 max-sm:w-4 max-sm:h-4"
+                  className="mr-1 max-sm:mr-0 max-sm:w-5 max-sm:h-5 self-center"
                   width={20}
                   height={10}
                   alt=""
                   src={rainChance}
                 />
-                <p className="text-medium font-medium font-sans text-slate-500 max-sm:text-sm">
+                <p className="text-medium font-medium font-sans text-slate-500 max-sm:text-md dark:text-white">
                   Rain
                 </p>
                 </div>
-                <p className="text-medium font-medium font-sans text-blue-500 max-sm:text-sm">{futureData.day.daily_chance_of_rain}%</p>
+                <p className="text-medium font-medium font-sans text-blue-500 max-sm:text-md">{futureData.day.daily_chance_of_rain}%</p>
               </div>
             </div>
           </div>

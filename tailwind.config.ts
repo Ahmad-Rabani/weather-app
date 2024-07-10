@@ -23,5 +23,6 @@ const config: Config = {
     require('flowbite/plugin'),
     flowbite.plugin(),
   ],
+  darkMode: "selector",
 };
 export default config;

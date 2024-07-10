@@ -6,14 +6,19 @@ import FutureWeather from "@/common_components/future_weather/FutureWeather";
 import { RootObject } from "@/type";
 import Accordian from "@/common_components/accordian/Accordian";
 import NotFound from "@/common_components/loader/NotFound";
+import nightMode from "../../../img/dark-mode.png";
+import dayMode from "../../../img/light.png";
+import Image from "next/image";
 
 const Page = () => {
   const [data, setData] = useState<RootObject>();
   const [cityName, setCityName] = useState<HTMLInputElement | string>("");
+  const [icon, setIcon] = useState(dayMode);
+  const [isDark, setIsDark] = useState(false);
 
   useEffect(() => {
     async function getData() {
-      const api = `http://api.weatherapi.com/v1/forecast.json?key=${
+      const api = `https://api.weatherapi.com/v1/forecast.json?key=${
         process.env.NEXT_PUBLIC_API_KEY
       }&q=${cityName || "paris"}&days=10&aqi=no&alerts=no`;
 
@@ -40,12 +45,28 @@ const Page = () => {
       setCityName(value);
     }, 1500);
   }
+
+  useEffect(() => {
+    function icons() {
+      setIcon(isDark ? nightMode : dayMode)
+    }
+    icons();
+  }, [isDark]);
+
+  function toggleDarkMode() {
+    setIsDark(!isDark)
+  }
+
   return (
-    <div className="flex flex-col justify-center items-center">
+    <div className={`flex bg-[rgb(224,248,251)] flex-col justify-center items-center dark:bg-black ${isDark && "dark"}`}>
+      <div className="flex justify-end w-[90%]">
+      <button onClick={toggleDarkMode} className="p-2 max-sm:w-8 w-[50px] border border-gray-800 text-white dark:bg-neutral-400 dark:text-white rounded mt-4">{<Image width={30} height={40} src={icon} alt=""/>}</button>
+      </div>
       <br />
       <div className="self-center relative flex w-[90%]">
+        
         <input
-          className=" w-[100%] p-2 rounded-2xl focus-visible:outline-none p-2 border-transparent"
+          className=" w-full rounded-2xl focus-visible:outline-none p-2 border-transparent dark:bg-slate-950 dark:text-white dark:placeholder:text-white"
           type="text"
           name="search"
           onChange={handleCityName}
@@ -55,7 +76,7 @@ const Page = () => {
       <br />
 
       {data ? (
-        <div className="w-[100%] flex flex-col jusitfy-center items-center gap-y-3">
+        <div className="w-full flex flex-col jusitfy-center items-center gap-y-3">
           <Weather data={data} />
           <FutureWeather data={data} />
           <Accordian data={data} />
@@ -63,25 +84,6 @@ const Page = () => {
       ) : (
         <NotFound />
       )}
-
-      {/* {data ? (
-         <> <Weather data={data} />
-          <FutureWeather data={data} />
-          <Accordian data={data} /> </>
-      ) : (
-        <NotFound />
-      )} */}
-
-      {/* {data ? (
-        [
-          <Weather data={data} />,
-          <FutureWeather data={data} />,
-          <Accordian data={data} />,
-      ]
-      ) : (
-        <NotFound />
-      )} */}
-
     </div>
   );
 };

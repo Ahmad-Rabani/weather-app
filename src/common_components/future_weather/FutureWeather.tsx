@@ -5,8 +5,8 @@ import { AllTypes } from "@/type";
 const FutureWeather = ({data}: AllTypes) => {
   return (
     <>
-      <div className="w-[90%] bg-white rounded-xl p-4 flex justify-center items-center flex-col">
-        <h1 className="text-xl font-medium font-sans text-slate-500 ml-6">
+      <div className="w-[90%] bg-white rounded-xl p-4 flex justify-center items-center flex-col dark:bg-slate-950">
+        <h1 className="text-xl font-medium font-sans text-slate-500 ml-6 dark:text-white">
           Extended Forcast
         </h1>
         <br />
