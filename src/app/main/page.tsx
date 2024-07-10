@@ -60,7 +60,7 @@ const Page = () => {
   return (
     <div className={`flex bg-[rgb(224,248,251)] flex-col justify-center items-center dark:bg-black ${isDark && "dark"}`}>
       <div className="flex justify-end w-[90%]">
-      <button onClick={toggleDarkMode} className="p-2 max-sm:w-8 w-[50px] border border-gray-800 text-white dark:bg-neutral-400 dark:text-white rounded mt-4">{<Image width={30} height={40} src={icon} alt=""/>}</button>
+      <button onClick={toggleDarkMode} className="p-2 max-sm:w-10 w-[50px] border border-gray-800 text-white dark:bg-neutral-400 dark:text-white rounded mt-4">{<Image width={30} height={40} src={icon} alt=""/>}</button>
       </div>
       <br />
       <div className="self-center relative flex w-[90%]">

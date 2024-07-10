@@ -62,7 +62,7 @@ const CustomAccordian = ({ futureData }: FiveDayForcastProps) => {
       </div>
 
       {display && (
-        <div className="max-sm:p-0 bg-[#EBF9FC] rounded-md p-10 mt-1 dark:bg-slate-950">
+        <div className="max-sm:p-0 bg-[#EBF9FC] rounded-md p-6 mt-1 dark:bg-slate-950">
           <div className="flex justify-between flex-wrap max-sm:justify-around max-sm:gap-y-2 max-sm:gap-x-3">
             <div className="flex flex-col max-sm:justify-center max-sm:items-center p-3 max-sm:gap-y-1">
               <div className="flex flex-col gap-y-2">
@@ -87,29 +87,29 @@ const CustomAccordian = ({ futureData }: FiveDayForcastProps) => {
               <div className="flex gap-x-1 max-sm:self-center">
                 <Image
                   className="mr-1 h-5 max-sm:mr-0 max-sm:w-6 max-sm:h-6"
-                  width={15}
-                  height={10}
+                  width={20}
+                  height={20}
                   alt=""
                   src={sunrise}
                 />
-                <p className="text-medium font-medium font-sans text-slate-500 max-sm:text-lg dark:text-white">
+                <p className="text-lg font-medium font-sans text-slate-500 max-sm:text-lg dark:text-white">
                   Sunrise {futureData.astro.sunrise}
                 </p>
               </div>
               <div className="flex gap-x-1 max-sm:self-center">
                 <Image
                   className="mr-1 h-5 max-sm:mr-0 max-sm:w-6 max-sm:h-6"
-                  width={15}
-                  height={10}
+                  width={20}
+                  height={20}
                   alt=""
                   src={sunset}
                 />
-                <p className="text-medium font-medium font-sans text-slate-500 max-sm:text-lg dark:text-white">
+                <p className="text-lg font-medium font-sans text-slate-500 max-sm:text-lg dark:text-white">
                   Sunset {futureData.astro.sunset}
                 </p>
               </div>
             </div>
-            <div className="flex flex-col justify-center gap-y-4 p-3 rounded max-sm:w-[153px] max-sm:gap-y-3">
+            <div className="flex flex-col justify-end gap-y-4 p-3 rounded max-sm:w-[153px] max-sm:gap-y-3">
               <div className="flex justify-between items-center gap-x-2">
                 <div className="flex gap-x-1">
                 <Image
