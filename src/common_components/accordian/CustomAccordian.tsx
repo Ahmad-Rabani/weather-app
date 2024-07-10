@@ -44,7 +44,7 @@ const CustomAccordian = ({ futureData }: FiveDayForcastProps) => {
       <br />
       <div
         onClick={handleAccordian}
-        className="flex justify-between items-center dark:border-white border-y-4 border rounded border-neutral-600 p-4 max-sm:p-2 cursor-pointer dark:bg-slate-950"
+        className="flex justify-between items-center dark:border-white border rounded border-neutral-600 p-4 max-sm:p-2 cursor-pointer dark:bg-slate-950"
       >
         <h1 className="text-xl font-medium font-sans text-gray-500 dark:text-white">
           Date: {futureData.date}
@@ -58,7 +58,7 @@ const CustomAccordian = ({ futureData }: FiveDayForcastProps) => {
             <Image className="ml-3 max-sm:hidden" width={20} height={30} src={icon} alt="" />
           )}
         </div>
-        <p className="dark:text-white">{display ? "↓" : "^"}</p>
+        <p className="dark:text-white">{display ? "v" : "^"}</p>
       </div>
 
       {display && (
