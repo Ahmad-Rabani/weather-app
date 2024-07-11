@@ -8,7 +8,7 @@ import NotFound from "@/common_components/loader/NotFound";
 import nightMode from "../../../img/dark-mode.png";
 import dayMode from "../../../img/light.png";
 import Image from "next/image";
-import useFetch from "../customHook/CustomHook";
+import useFetch from "../../Hook/useFetch";
 
 const Page = () => {
   const [cityName, setCityName] = useState<HTMLInputElement | string>("");
@@ -52,7 +52,7 @@ const Page = () => {
       <div className="flex justify-end w-[90%]">
         <button
           onClick={toggleDarkMode}
-          className="p-2 max-sm:w-10 w-[50px] border border-gray-800 text-white dark:bg-neutral-400 dark:text-white rounded mt-4"
+          className="animate-pulse w-[50px] hover:animate-none p-2 max-sm:w-10  border border-gray-800 text-white dark:bg-neutral-400 dark:text-white rounded mt-4"
         >
           {<Image width={30} height={40} src={icon} alt="" />}
         </button>
@@ -60,7 +60,7 @@ const Page = () => {
       <br />
       <div className="self-center relative flex w-[90%]">
         <input
-          className=" w-full rounded-2xl focus-visible:outline-none p-2 border-transparent dark:bg-slate-950 dark:text-white dark:placeholder:text-white"
+          className="w-full rounded-2xl focus-visible:outline-none p-2 border-transparent dark:bg-slate-950 dark:text-white dark:placeholder:text-white"
           type="text"
           name="search"
           onChange={handleCityName}

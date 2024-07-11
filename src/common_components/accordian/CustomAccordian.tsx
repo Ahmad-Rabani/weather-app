@@ -46,7 +46,7 @@ const CustomAccordian = ({ futureData }: FiveDayForcastProps) => {
         onClick={handleAccordian}
         className="flex justify-between items-center dark:border-white border rounded border-neutral-600 p-4 max-sm:p-2 cursor-pointer dark:bg-slate-950"
       >
-        <h1 className="text-xl font-medium font-sans text-gray-500 dark:text-white">
+        <h1 className="text-[clamp(16px,2vw,24px)] font-medium font-sans text-gray-500 dark:text-white ">
           Date: {futureData.date}
         </h1>
         <div className="flex justify-center items-center max-sm:hidden">
@@ -66,7 +66,7 @@ const CustomAccordian = ({ futureData }: FiveDayForcastProps) => {
           <div className="flex justify-between flex-wrap max-sm:justify-around max-sm:gap-y-2 max-sm:gap-x-3">
             <div className="flex flex-col max-sm:justify-center max-sm:items-center p-3 max-sm:gap-y-1">
               <div className="flex flex-col gap-y-2">
-                <h2 className="text-xl font-medium font-sans text-blue-500 max-sm:text-xl">
+                <h2 className="text-[clamp(16px,2vw,24px)] font-medium font-sans text-blue-500">
                   Celsius / Fehrenheit
                 </h2>
                 <div className="flex gap-x-2 justify-center">
@@ -86,7 +86,7 @@ const CustomAccordian = ({ futureData }: FiveDayForcastProps) => {
               <br />
               <div className="flex gap-x-1 max-sm:self-center">
                 <Image
-                  className="mr-1 h-5 max-sm:mr-0 max-sm:w-6 max-sm:h-6"
+                  className="mr-1 max-sm:mr-0 max-sm:w-6 max-sm:h-6"
                   width={20}
                   height={20}
                   alt=""
@@ -98,7 +98,7 @@ const CustomAccordian = ({ futureData }: FiveDayForcastProps) => {
               </div>
               <div className="flex gap-x-1 max-sm:self-center">
                 <Image
-                  className="mr-1 h-5 max-sm:mr-0 max-sm:w-6 max-sm:h-6"
+                  className="mr-1 max-sm:mr-0 max-sm:w-6 max-sm:h-6"
                   width={20}
                   height={20}
                   alt=""
@@ -119,11 +119,11 @@ const CustomAccordian = ({ futureData }: FiveDayForcastProps) => {
                   alt=""
                   src={humidityImg}
                 />
-                <p className="text-medium font-medium font-sans text-slate-500 max-sm:text-md dark:text-white">
+                <p className="font-medium font-sans text-slate-500 max-sm:text-md dark:text-white">
                   Humidity
                 </p>
                 </div>
-                <p className="text-medium font-medium font-sans text-blue-500 max-sm:text-md">{futureData.day.avghumidity}%</p>
+                <p className="font-medium font-sans text-blue-500 max-sm:text-md">{futureData.day.avghumidity}%</p>
               </div>
               <hr />
               <div className="flex justify-between items-center gap-x-2">
@@ -135,11 +135,11 @@ const CustomAccordian = ({ futureData }: FiveDayForcastProps) => {
                   alt=""
                   src={wind}
                 />
-                <p className="text-medium font-medium font-sans text-slate-500 max-sm:text-md dark:text-white">
+                <p className="font-medium font-sans text-slate-500 max-sm:text-md dark:text-white">
                   wind
                 </p>
                 </div>
-                <p className="text-medium font-medium font-sans text-blue-500 max-sm:text-md">{futureData.day.maxwind_kph}kph</p>
+                <p className="font-medium font-sans text-blue-500 max-sm:text-md">{futureData.day.maxwind_kph}kph</p>
               </div>
               <hr />
               <div className="flex justify-between items-center gap-x-2">
@@ -151,11 +151,11 @@ const CustomAccordian = ({ futureData }: FiveDayForcastProps) => {
                   alt=""
                   src={rainChance}
                 />
-                <p className="text-medium font-medium font-sans text-slate-500 max-sm:text-md dark:text-white">
+                <p className="font-medium font-sans text-slate-500 max-sm:text-md dark:text-white">
                   Rain
                 </p>
                 </div>
-                <p className="text-medium font-medium font-sans text-blue-500 max-sm:text-md">{futureData.day.daily_chance_of_rain}%</p>
+                <p className="font-medium font-sans text-blue-500 max-sm:text-md">{futureData.day.daily_chance_of_rain}%</p>
               </div>
             </div>
           </div>

@@ -33,7 +33,7 @@ const FiveDayForcast = ({ futureData }: FiveDayForcastProps) => {
   }, [futureData.day.condition.text]);
 
   return (
-    <div className="flex flex-col items-center text-center min-w-[100px]">
+    <div className="flex flex-col items-center text-center min-w-[100px] max-sm:gap-y-1">
       <h4 className="text-sky-500 font-bold">{weekday[day]}</h4>
       <Image className="mt-3" width={60} height={60} src={icon} alt="" />
       <h3 className="text-[rgb(76,131,192)] text-sm font-semibold mt-3">

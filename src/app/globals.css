@@ -1,11 +1,32 @@
 @tailwind base;
 @tailwind components;
-@tailwind utilities;
 
 body {
   background:  rgb(224,248,251);
 }
 
 * {
-  @apply transition-colors duration-200
+  @apply transition-colors duration-200;
 }
+
+.details-main-div{
+  @apply flex justify-between flex-wrap gap-x-1;
+}
+
+.details-div{
+  @apply flex gap-x-2 max-sm:gap-x-0;
+}
+
+.details-icons{
+  @apply mr-1 max-sm:mr-0 max-sm:w-4 max-sm:h-4;
+}
+
+.details{
+  @apply dark:text-white font-medium font-sans text-slate-500 max-sm:text-sm;
+}
+
+.details-result{
+  @apply font-medium font-sans text-sky-500 ml-2 max-sm:ml-1;
+}
+
+@tailwind utilities;

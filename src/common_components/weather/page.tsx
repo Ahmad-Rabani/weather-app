@@ -64,11 +64,11 @@ useEffect(() => {
             <h1 className="dark:text-white text-7xl max-sm:text-3xl max-sm:self-start max-sm:ml-2 font-sans self-center ml-5 text-slate-500">{isCelsius ? data.current.temp_c : data.current.temp_f }&deg;</h1>
           </div>
 
-          <h2 className="dark:text-white text-lg font-bold font-mono text-slate-500 ml-6 ">
+          <h2 className="dark:text-white text-lg font-bold font-mono text-slate-500 ml-6">
             {undefined ? "clear sky" : weatherCondition}
           </h2>
         </div>
-
+        
         <div className="flex flex-col justify-center flex-nowrap gap-y-4 p-4 max-sm:flex-row max-sm:mt-5 md:flex-col lg:flex-col max-sm:gap-x-7 max-sm:p-2 max-sm:ml-0">
           <div className="flex justify-between flex-wrap gap-x-1">
             <div className="flex gap-x-2 max-sm:gap-x-0">
